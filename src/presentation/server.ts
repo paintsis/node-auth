@@ -1,3 +1,4 @@
+import exp from 'constants';
 import express, { Router } from 'express'
 
 interface Options {
@@ -21,7 +22,9 @@ constructor(option: Options){
     }
 
     async start(){
-
+        //Middlewares
+        this.app.use(express.json())
+        this.app.use(express.urlencoded({extended: true}))
         //Usar las rutas
         this.app.use(this.routes)
 
